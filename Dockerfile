@@ -5,11 +5,11 @@ ARG NB_UID=1000
 
 USER root
 
-# Install all OS dependencies for fully functional notebook server
-RUN apt-get update && apt-get install -yq --no-install-recommends \
+# Install man-db first so we can see mdbtools-doc manpages:
+RUN apt-get update && apt-get install -yq --no-install-recommends man-db && \
+    apt-get install -yq --no-install-recommends \
     mdbtools \
     mdbtools-doc \
-    man \
     && rm -rf /var/lib/apt/lists/*
 
 RUN conda install --quiet --yes appmode && \
