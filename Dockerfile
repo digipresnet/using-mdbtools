@@ -11,6 +11,9 @@ RUN conda install --quiet --yes appmode && \
     jupyter nbextension     enable --py --sys-prefix appmode && \
     jupyter serverextension enable --py --sys-prefix appmode
 
+RUN conda install --quiet --yes bash_kernel && \
+    python -m bash_kernel.install
+
 #RUN conda install --quiet --yes fileupload && \
 #    jupyter nbextension enable --py widgetsnbextension && \
 #    jupyter nbextension install --user --py fileupload && \

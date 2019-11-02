@@ -1,0 +1,28 @@
+Border Width = "1", Cell Padding = "0", Cell Spacing = "0"
+Orientation = "Vertical", Alignment = "<Default>", Show Header = "Yes"
+Header Font Face = "<Default>", Style = "<Default>", Size = "<Default>"
+Header Background Color = "", Foreground Color = ""
+Body Font Face = "<Default>", Style = "<Default>", Size = "<Default>"
+Body Background Color = "", Foreground Color = ""
+Driver = "Microsoft Access Driver (*.mdb)"
+Type = "Microsoft Access Driver (*.mdb)"
+Name = "D:\FONTES CD Package Version 1.1\FontesTextsList.mdb"
+DBOpen = "driver={Microsoft Access Driver (*.mdb)};dbq=D:\FONTES CD Package Version 1.1\FontesTextsList.mdb;"
+Table = "Texts on Database"
+Join Table = ""
+Number Joins = 0 
+Number Selected Fields = 5 
+"Texts on Database.TEXT REFERENCE", "TEXT REFERENCE", "Yes", "", "", 
+"Texts on Database.AUTHOR", "AUTHOR", "Yes", "", "", 
+"Texts on Database.TITLE", "TITLE", "Yes", "", "", 
+"Texts on Database.CONTRIBUTOR", "CONTRIBUTOR", "Yes", "", "", 
+"Texts on Database.ENTRIES", "ENTRIES", "Yes", "", "", 
+SQL Query = "SELECT<CR>
+ [Texts on Database].[TEXT REFERENCE] as [TEXT REFERENCE],<CR>
+ [Texts on Database].[AUTHOR] as [AUTHOR],<CR>
+ [Texts on Database].[TITLE] as [TITLE],<CR>
+ [Texts on Database].[CONTRIBUTOR] as [CONTRIBUTOR],<CR>
+ [Texts on Database].[ENTRIES] as [ENTRIES] <CR>
+FROM<CR>
+ [Texts on Database]"
+SQL Edited = false
