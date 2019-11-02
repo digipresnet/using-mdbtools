@@ -1,10 +1,14 @@
 FROM jupyter/scipy-notebook:1386e2046833
 
+ARG NB_USER=jovyan
+ARG NB_UID=1000
+
 USER root
 
 # Install all OS dependencies for fully functional notebook server
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     mdbtools \
+    man \
     && rm -rf /var/lib/apt/lists/*
 
 RUN conda install --quiet --yes appmode && \
@@ -18,6 +22,10 @@ RUN conda install --quiet --yes bash_kernel && \
 #    jupyter nbextension enable --py widgetsnbextension && \
 #    jupyter nbextension install --user --py fileupload && \
 #    jupyter nbextension enable  --user --py fileupload
+
+# Copy files into place:
+COPY . ${HOME}
+RUN chown -R ${NB_UID} ${HOME}
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
