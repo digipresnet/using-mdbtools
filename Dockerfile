@@ -5,11 +5,14 @@ ARG NB_UID=1000
 
 USER root
 
+# Re-configure so some man pages get installed (see https://unix.stackexchange.com/questions/480459/docker-debianstretch-slim-install-man-and-view-manpages):
+RUN sed -i '/path-exclude \/usr\/share\/man/d' /etc/dpkg/dpkg.cfg.d/docker && \
+    sed -i '/path-exclude \/usr\/share\/groff/d' /etc/dpkg/dpkg.cfg.d/docker
+
 # Install man-db first so we can see mdbtools-doc manpages:
 RUN apt-get update && apt-get install -yq --no-install-recommends man-db && \
     apt-get install -yq --no-install-recommends \
     mdbtools \
-    mdbtools-doc \
     && rm -rf /var/lib/apt/lists/*
 
 RUN conda install --quiet --yes appmode && \
